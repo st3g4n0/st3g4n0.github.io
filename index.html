@@ -4,14 +4,531 @@
 <head>
     <title>Gamma Software</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="    http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<style>
+    header {
+        background: #fff;
+        padding: 20px 0;
+    }
+    
+    header .navbar-brand {
+        padding-top: 5px;
+    }
+    
+    header .navbar-default {
+        background: none;
+        border: 0px;
+    }
+    
+    header .navbar-default .navbar-nav {
+        padding-top: 10px;
+    }
+    
+    header .navbar-default .navbar-nav li a {
+        color: #333333;
+        padding: 10px 26px;
+        font-size: 15px;
+    }
+    
+    header .navbar-default .navbar-nav li a:hover {
+        color: #000;
+    }
+    
+    .navigation {
+        background: #fff;
+        padding: 20px 0;
+    }
+    
+    .navigation .navbar-brand {
+        padding-top: 5px;
+    }
+    
+    .navigation .navbar-toggler {
+        font-size: 36px;
+    }
+    
+    .navigation .navbar-toggler:focus {
+        outline: 0;
+    }
+    
+    .navigation .navbar .navbar-nav {
+        padding-top: 10px;
+        margin-left: auto!important;
+    }
+    
+    @media (max-width: 992px) {
+        .navigation .navbar .navbar-nav {
+            text-align: center;
+        }
+    }
+    
+    .navigation .navbar .navbar-nav>li>a {
+        color: #5C5C5C;
+        padding: 10px 15px;
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        transition: 0.3s;
+    }
+    
+    .navigation .navbar .navbar-nav>li>a:hover,
+    .navigation .navbar .navbar-nav>li>a:focus {
+        color: #000;
+        background: transparent;
+    }
+    
+    .navigation .navbar .navbar-nav li.active>a {
+        text-decoration: underline;
+        color: #655E7A;
+    }
+    
+    .service {
+        text-align: center;
+        padding: 90px 0;
+    }
+    
+    .service .service-item {
+        padding-bottom: 30px;
+    }
+    
+    .service .service-item i {
+        font-size: 60px;
+        color: black;
+    }
+    
+    .service .service-item h4 {
+        padding-top: 15px;
+        margin: 0;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    
+    .service .service-item p {
+        padding-top: 10px;
+        margin: 0;
+    }
+    
+    .dark-service .title {
+        color: #fff;
+    }
+    
+    .dark-service .service-item {
+        text-align: center;
+        padding: 0 10px;
+        padding-top: 30px;
+    }
+    
+    @media (max-width: 480px) {
+        .dark-service .service-item {
+            padding: 0;
+            padding-top: 30px;
+        }
+    }
+    
+    .dark-service .service-item i {
+        font-size: 50px;
+        color: #fff;
+    }
+    
+    .dark-service .service-item h4 {
+        color: #fff;
+        padding-top: 15px;
+        margin: 0;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+    
+    .dark-service .service-item p {
+        padding-top: 10px;
+        margin: 0;
+    }
+    
+    .service-about p {
+        line-height: 28px;
+    }
+    
+    .service-arrow .block {
+        padding: 70px 30px;
+        text-align: center;
+    }
+    
+    @media (max-width: 480px) {
+        .service-arrow .block {
+            padding: 60px 10px;
+        }
+    }
+    
+    .service-arrow .block i {
+        font-size: 40px;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .service-arrow .block p {
+        color: #fff;
+        margin-bottom: 0;
+    }
+    
+    .service-arrow .block h3 {
+        font-size: 24px;
+    }
+    
+    .service-list .block {
+        padding: 30px;
+        margin-bottom: 20px;
+        background: #fff;
+    }
+    
+    @media (max-width: 480px) {
+        .service-list .block {
+            padding: 30px 20px;
+        }
+    }
+    
+    .service-list .block p {
+        margin-bottom: 0;
+    }
+</style>
 
+<body>
+    <header class="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg p-0">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="https://www.atoutcapital.com/wp-content/uploads/2016/11/gamma.png" height="60px" alt="Logo">
+                        </a>
+
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="ion-android-menu"></span>
+            </button>
+
+                        <div class="collapse navbar-collapse ml-auto" id="navbarsExample09">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Inicio</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
+                                <li class="nav-item"><a class="nav-link" href="services.html">Servicios</a></li>
+                                <li class="nav-item"><a class="nav-link" href="portfolio.html">Casos de exito</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
+                                <li class="nav-item"><a class="nav-link" href="survey.html">Encuesta de satisfaccion</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="p-3 mb-2 bg-dark text-white">
+        <div class="container">
+            <div class="row" style="text-align: center; padding: 2%;">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1 class="animated fadeInUp">¡Ponte en forma con <br> Gamma Software!</h1>
+                        <p class="animated fadeInUp">Te ayudamos a mantenerte en la cima de tus objetivos de fitness proporcionando <br> increíbles programas para que hacer ejercicio sea más divertido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="service">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="section-title">
+                        <h2>Nuestros servicios</h2>
+                        <p>Le ofrecemos nuestros servicios de consultoría y asesoramiento para que su empresa adopte las soluciones tecnológicas adecuadas a sus necesidades en tecnologías de la información.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 2%;">
+                <div class="col-lg-4 col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <i class="icon ion-coffee"></i>
+                        <h4>Desarrollo de software</h4>
+                        <p>Desarrollamos software a medida para empresas, aportando soluciones tecnológicas personalizadas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <i class="ion-compass"></i>
+                        <h4>Integración de sistemas</h4>
+                        <p>Ofrecemos soluciones personalizadas para integrar los diferentes sistemas de su empresa utilizando estándares.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <i><ion-icon name="phone-portrait-outline"></ion-icon></i>
+                        <h4>Aplicaciones móviles</h4>
+                        <p>Desarrollo de aplicaciones nativas para móviles y tablets. Para Android, iOS y Windows.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <i class="ion-bug"></i>
+                        <h4>Desarrollo web</h4>
+                        <p>Diseño y programación de todo tipo de páginas web: Webs corporativas, tiendas online, catálogos...</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <i class="ion-navigate"></i>
+                        <h4>Software GIS</h4>
+                        <p>Software basado en Sistemas de Información Geográfica para gestionar sus datos geoespaciales. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <i class="ion-search"></i>
+                        <h4>Posicionamiento web</h4>
+                        <p>Optimizamos su web para que pueda conseguir los mejores puestos en buscadores y aumentar su visibilidad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="p-3 mb-2 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1>Noticias</h1>
+                        <p>Mantente al corriente de todas las noticias sobre fitness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="page-wrapper">
+        <div class="container" style="padding: 2%;">
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <div class="post" style="padding:4%;">
+                        <div class="post-thumb ">
+                            <a href="#">
+                                <img class="img-fluid " src="https://as01.epimg.net/deporteyvida/imagenes/2021/01/28/portada/1611835441_104153_1611835820_noticia_normal_recorte1.jpg" alt=" ">
+                            </a>
+                        </div>
+                        <h3 class="post-title "><a href="#">Una pesa y seis ejercicios compuestos para quemar grasa y ganar músculo</a></h3>
+                        <div class="post-meta ">
+                            <ul>
+                                <li>
+                                    <i class="ion-calendar "></i> 28, ENERO 2021
+                                </li>
+                                <li>
+                                    <i class="ion-android-people "></i> Publicado por Álvaro Piqueras
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-content ">
+                            <p>Cada vez es más habitual que las pesas rusas o kettlebells, que no son otra cosa que una bola hierro fundido semejante a una bala de cañón, con un asa, sean introducidas en rutinas de entrenamiento de fuerza por constituir
+                                un tipo de trabajo físico dinámico, accesible, práctico y adecuado para todo el mundo, que no está exento de beneficios.
+                            </p>
+                            <a href="#" class="btn btn-primary ">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="post" style="padding:4%;">
+                        <div class="post-thumb ">
+                            <a href="#">
+                                <img class="img-fluid " src="https://as01.epimg.net/deporteyvida/imagenes/2021/01/28/portada/1611835441_104153_1611835820_noticia_normal_recorte1.jpg" alt=" ">
+                            </a>
+                        </div>
+                        <h3 class="post-title "><a href="#">Una pesa y seis ejercicios compuestos para quemar grasa y ganar músculo</a></h3>
+                        <div class="post-meta ">
+                            <ul>
+                                <li>
+                                    <i class="ion-calendar "></i> 28, ENERO 2021
+                                </li>
+                                <li>
+                                    <i class="ion-android-people "></i> Publicado por Álvaro Piqueras
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-content ">
+                            <p>Cada vez es más habitual que las pesas rusas o kettlebells, que no son otra cosa que una bola hierro fundido semejante a una bala de cañón, con un asa, sean introducidas en rutinas de entrenamiento de fuerza por constituir
+                                un tipo de trabajo físico dinámico, accesible, práctico y adecuado para todo el mundo, que no está exento de beneficios.
+                            </p>
+                            <a href="#" class="btn btn-primary ">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="post" style="padding:4%;">
+                        <div class="post-thumb ">
+                            <a href="#">
+                                <img class="img-fluid " src="https://as01.epimg.net/deporteyvida/imagenes/2021/01/28/portada/1611835441_104153_1611835820_noticia_normal_recorte1.jpg" alt=" ">
+                            </a>
+                        </div>
+                        <h3 class="post-title "><a href="#">Una pesa y seis ejercicios compuestos para quemar grasa y ganar músculo</a></h3>
+                        <div class="post-meta ">
+                            <ul>
+                                <li>
+                                    <i class="ion-calendar "></i> 28, ENERO 2021
+                                </li>
+                                <li>
+                                    <i class="ion-android-people "></i> Publicado por Álvaro Piqueras
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-content ">
+                            <p>Cada vez es más habitual que las pesas rusas o kettlebells, que no son otra cosa que una bola hierro fundido semejante a una bala de cañón, con un asa, sean introducidas en rutinas de entrenamiento de fuerza por constituir
+                                un tipo de trabajo físico dinámico, accesible, práctico y adecuado para todo el mundo, que no está exento de beneficios.
+                            </p>
+                            <a href="#" class="btn btn-primary ">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="post" style="padding:4%;">
+                        <div class="post-thumb ">
+                            <a href="#">
+                                <img class="img-fluid " src="https://as01.epimg.net/deporteyvida/imagenes/2021/01/28/portada/1611835441_104153_1611835820_noticia_normal_recorte1.jpg" alt=" ">
+                            </a>
+                        </div>
+                        <h3 class="post-title "><a href="#">Una pesa y seis ejercicios compuestos para quemar grasa y ganar músculo</a></h3>
+                        <div class="post-meta ">
+                            <ul>
+                                <li>
+                                    <i class="ion-calendar "></i> 28, ENERO 2021
+                                </li>
+                                <li>
+                                    <i class="ion-android-people "></i> Publicado por Álvaro Piqueras
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-content ">
+                            <p>Cada vez es más habitual que las pesas rusas o kettlebells, que no son otra cosa que una bola hierro fundido semejante a una bala de cañón, con un asa, sean introducidas en rutinas de entrenamiento de fuerza por constituir
+                                un tipo de trabajo físico dinámico, accesible, práctico y adecuado para todo el mundo, que no está exento de beneficios.
+                            </p>
+                            <a href="#" class="btn btn-primary ">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
+
+        <style>
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 99;
+                border: none;
+                outline: none;
+                background-color: red;
+                color: white;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 10px;
+                font-size: 18px;
+            }
+            
+            #myBtn:hover {
+                background-color: #555;
+            }
+        </style>
+        <script>
+            mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function() {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.documentElement.scrollTop > 250) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+
+
+        <footer class="footer " style="background: #F5F5F5; text-align: center; padding: 80px 0; ">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12 ">
+                        <div class="footer-elements " style="padding-bottom: 25px; ">
+                            <ul style="margin: 0; padding: 0; list-style: none; ">
+                                <li style="display: inline-block; padding: 10px 20px; "><a style="color: #000000; text-decoration: none; " href="about.html ">Nosotros</a></li>
+                                <li style="display: inline-block; padding: 10px 20px; "><a style="color: #000000; text-decoration: none; " href="services.html ">Servicios</a></li>
+                                <li style="display: inline-block; padding: 10px 20px; "><a style="color: #000000; text-decoration: none; " href="portfolio.html ">Casos de exito</a></li>
+                                <li style="display: inline-block; padding: 10px 20px; "><a style="color: #000000; text-decoration: none; " href="contact.html ">Contacto</a></li>
+                                <li style="display: inline-block; padding: 10px 20px; "><a style="color: #000000; text-decoration: none; " href="survey.html ">Encuesta de satisfaccion</a></li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 13px;line-height: 25px;color: #919191; " class="copyright mb-0 ">Copyright 2022 © Designed &amp; Developed by Vladimir Mateev. All rights reserved.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="margin: 0; padding: 0;">
+                    <p>Tamaño texto:</p>
+                    <div class="col-lg-12" style="
+    margin: 0 auto;
+    width: 10%;
+">
+                        <div id="chcp_font_size" class="input-group">
+                            <span class="input-group-btn">
+                          <button id="decrease" class="btn btn-default" type="button"><i class="fa fa-font" aria-hidden="true"></i>A&darr;</button>
+                          <button id="increase" class="btn btn-default" type="button"><i class="fa fa-font" aria-hidden="true"></i>&uarr;A</button>
+                        </span>
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </footer>
+        <script>
+            var min = 8;
+            var max = 18;
+
+            function increaseFontSize() {
+                var body = document.body,
+                    currentFontSize = parseFloat(window.getComputedStyle(body, null).fontSize);
+
+                if (currentFontSize < max) {
+                    body.style.fontSize = ++currentFontSize + 'px';
+                }
+            }
+
+            function decreaseFontSize() {
+                var body = document.body,
+                    currentFontSize = parseFloat(window.getComputedStyle(body, null).fontSize);
+
+                if (currentFontSize > min) {
+                    body.style.fontSize = --currentFontSize + 'px';
+                }
+            }
+
+            document.querySelector('#increase').addEventListener('click', increaseFontSize);
+
+
+            document.querySelector('#decrease').addEventListener('click', decreaseFontSize);
+        </script>
 </body>
 
 </html>
